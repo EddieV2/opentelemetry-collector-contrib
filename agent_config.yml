@@ -31,8 +31,8 @@ exporters:
   # prometheus:
   #   endpoint: "0.0.0.0:9464"
   signalfx:
-    access_token: jQSmeMfZ9jwMKLaNUJMrYg 
-    realm: us1 
+    access_token: ${SPLUNK_ACCESS_TOKEN}
+    realm: ${SPLUNK_REALM}
     # ingest_url: ${SPLUNK_INGEST_URL} 
     # trace_url: ${SPLUNK_TRACE_URL} 
     # api_url: ${SPLUNK_API_URL}
@@ -45,10 +45,10 @@ processors:
         value: physical
       - action: insert
         key: splunkit/team
-        value: cpe
+        value: ${SPLUNK_TEAM}
       - action: insert
         key: splunkit/resource
-        value: macOS
+        value: ${RESOURCE_TYPE}
   batch:
     timeout: 5s
   memory_limiter:
