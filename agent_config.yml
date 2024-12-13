@@ -31,10 +31,10 @@ processors:
     attributes:
       - action: insert
         key: splunkit/team
-        value: cpe
+        value: ${SPLUNK_TEAM}
       - action: insert
         key: splunkit/resource
-        value: windows-vdi
+        value: ${RESOURCE_TYPE}
   batch:
   memory_limiter:
     check_interval: 2s
