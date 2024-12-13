@@ -1,3 +1,3 @@
 [submodule "macotel"]
 	path = macotel
-	url = https://github.com/EddieV2/macotel
+	url = git@github.com:EddieV2/splunk-otel.git
