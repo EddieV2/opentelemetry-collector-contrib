@@ -1,4 +1,4 @@
-# NOTE:
+ # NOTE:
 # This builder configuration is NOT used to build any official binary.
 # To see the builder manifests used for official binaries,
 # check https://github.com/open-telemetry/opentelemetry-collector-releases
@@ -8,24 +8,31 @@
 
 dist:
   module: go.opentelemetry.io/collector/cmd/otelcorecol
-  name: otelcorecol
+  name: macotelcorecol
   description: Local OpenTelemetry Collector binary, testing only.
-  version: 0.111.0-dev
-  otelcol_version: 0.111.0
-  output_path: /tmp/dist
+  version: 0.115.0-dev
+  output_path: /tmp/otelcol
 
 receivers:
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.111.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.115.0
+
 exporters:
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/signalfxexporter v0.111.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/signalfxexporter v0.115.0
+
 extensions:
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension v0.111.0
+  - gomod: go.opentelemetry.io/collector/extension/zpagesextension v0.115.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension v0.115.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/pprofextension v0.115.0
+
 processors:
-  - gomod:  go.opentelemetry.io/collector/processor/batchprocessor v0.111.0
-  - gomod: go.opentelemetry.io/collector/processor/memorylimiterprocessor v0.111.0
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor v0.111.0
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.111.0
+  - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.115.0
+  - gomod: go.opentelemetry.io/collector/processor/memorylimiterprocessor v0.115.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor v0.115.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.115.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.115.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.115.0
+  
 service:
-  - gomod: go.opentelemetry.io/collector/extensions v0.111.0
-  - gomod: go.opentelemetry.io/collector/pipelines v0.111.0
-  - gomod: go.opentelemetry.io/collector/telemetry v0.111.0
+  - gomod: go.opentelemetry.io/collector/extensions v0.115.0
+  - gomod: go.opentelemetry.io/collector/pipelines v0.115.0
+  - gomod: go.opentelemetry.io/collector/telemetry v0.115.0
